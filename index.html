@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pounce Co - Tienda de Zapatillas de Streetwear</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 1;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark-bg: #0a0a0a;
+            --dark-card: #000000;
+            --gray-dark: #f8efef;
+            --electric-blue: #F96815;
+            --white: hsl(22, 95%, 53%);
+            --text-gray: #fff2f2;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--white);
+            line-height: 1;
+        }
+
+        /* HEADER & NAVIGATION */
+        header {
+            background-color: #0e0e0ecb;
+            border-bottom: 1px solid #F96815;
+            padding: 1rem 3rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            
+}
+
+.search-input {
+    background: transparent;
+    border: none;
+    color: rgb(255, 255, 255);
+    outline: none;
+}
+
+.search-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+        
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--electric-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .search-box {
+            flex: 1;
+            max-width: 400px;
+            margin: 0 2rem;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background-color: var(--gray-dark);
+            border: 1px solid var(--electric-blue);
+            border-radius: 50px;
+            color: var(--white);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--white);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.804);
+        }
+
+        .search-box input::placeholder {
+            color: var(--text-black);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-black);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--electric-blue);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--gray-dark) 100%);
+            padding: 8rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--electric-blue);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1.25rem;
+            color: #000000;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            line-height: 1.25;
+        }
+
+        .cta-btn {
+            background-color: var(--electric-blue);
+            color: #000000;
+            padding: 1rem 4rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.28rem;
+            font-weight: 800;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgb(0, 0, 0);
+        }
+
+        .cta-btn:hover {
+            background-color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(255, 106, 0, 0.775);
+        }
+
+        /* PRODUCTS SECTION */
+        .products-section {
+            max-width: 1400px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .products-section h2 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: var(--dark-card);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-dark);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px #F96815;
+            border-color: var(--electric-blue);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--gray-dark), var(--dark-bg));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--electric-blue);
+            font-weight: 700;
+        }
+
+        .product-info {
+            padding: 1.25rem;
+        }
+
+        .product-brand {
+            color: var(--electric-blue);
+            font-weight: 700;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .product-price {
+            color: var(--electric-blue);
+            font-size: 1.25rem;
+            font-weight: 300;
+            margin-top: 0.5rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+                gap: 0.25rem;
+            }
+
+            .search-box {
+                flex: 1 1 100%;
+                max-width: 100%;
+                margin: 1rem 0 0 0;
+                order: 2;
+            }
+
+            .logo {
+                font-size: 1.25rem;
+            }
+
+            nav ul {
+                gap: 2rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 4rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 1.125rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 1rem;
+            }
+
+            .product-image {
+                height: 200px;
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 0rem;
+                font-size: 0.875rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Pounce Co</div>
+            <div class="search-box">
+                <input type="text" placeholder="Buscar Zapatillas...">
+            </div>
+            <ul>
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#shop">Tienda</a></li>
+                <li><a href="#about">Ubicación</a></li>
+                <li><a href="#contact">Ayuda</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Zapatillas de Lujo</h1>
+            <p>Descubre las mejores marcas más exclusivas del streetwear y zapatillas de diseñador</p>
+            <button class="cta-btn">Comprar Ahora</button>
+        </div>
+    </section>
+
+    <!-- PRODUCTS SECTION -->
+    <section class="products-section" id="shop">
+        <h2>Nuestras Colecciones</h2>
+        <div class="products-grid">
+            <!-- Jordan -->
+            <div class="product-card">
+                <div class="product-image"> 
+                    <img src="https://tse3.mm.bing.net/th/id/OIP.nz73j98iQv54vpsAjwELgAHaHa?w=600&h=600&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Air Jordan 1 Retro" style="width: 100%; height: 111%; object-fit: cover;">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">jordan</div>
+                    <div class="product-name">Jordan 11 retro gamma blue</div>
+                    <div class="product-price">S/1,010.00</div>
+                </div>
+            </div>
+
+            <!-- Nike -->
+            <div class="product-card">
+                <div class="product-image"> 
+                    <img src="https://tse3.mm.bing.net/th/id/OIP.K26CBmqlv7dCTMzFFieAwwHaHa?w=3144&h=3144&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Nike Air Max Tn" style="width: 100%; height: 110%; object-fit: cover;">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Nike</div>
+                    <div class="product-name">Nike Air Max Tn</div>
+                    <div class="product-price">S/400.00</div>
+                </div>
+            </div>
+
+            <!-- Adidas -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://th.bing.com/th/id/R.7a15d9aedf02df349d86953d31068e4a?rik=%2bcE5dUl6kEB2ug&riu=http%3a%2f%2fstealplug.com.my%2fcdn%2fshop%2fproducts%2fYeezy700Waverunner1.jpg%3fv%3d1671092469&ehk=ULtdKvVmQqU7XMe4Y7WNgk0H6SicuYULV9Lb8WL4c%2bQ%3d&risl=&pid=ImgRaw&r=0" alt="adidas Yeezy Boost 700" style="width: 100%; height: 108%; object-fit: cover;">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Adidas</div>
+                    <div class="product-name">Yeezy Boost 700</div>
+                    <div class="product-price">S/350.00</div>
+                </div>
+            </div>
+
+            <!-- Reebok -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://reebok.bynder.com/transform/a7dbf4c7-8c0a-488e-9ed2-3e97482f3f27/100210141_SLC_eCom-tif?io=transform:scale,width:600" alt="Reebok Classic Leather Legacy" style="width: 100%; height: 99%; object-fit: cover;">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Reebok</div>
+                    <div class="product-name">Classic Leather Legacy</div>
+                    <div class="product-price">S/889.00</div>
+                </div>
+            </div>
+
+            <!-- Amiri -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://ansh46.com/cdn/shop/files/M14A0897_bab0414b-434d-4aa6-84f5-ff3677e66165_1024x1024.jpg?v=1719243501" alt="Amiri Skel Sneaker" style="width: 100%; height: 110%; object-fit: cover;">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Amiri</div>
+                    <div class="product-name">Skel Sneaker</div>
+                    <div class="product-price">S/1,500.00</div>
+                </div>
+            </div>
+
+            <!-- Louis Vuitton -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://tse4.mm.bing.net/th/id/OIP.IOo0q1r7Try6P2cR1ahqwAHaHa?w=2400&h=2400&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Louis Vuitton LV Archlight" style="width: 100%; height: 99%; object-fit: cover;">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Louis Vuitton</div>
+                    <div class="product-name">LV Trainer 'White Black Panda</div>
+                    <div class="product-price">S/1,800.00</div>
+                </div>
+            </div>
+
+            <!-- Bape -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://tse3.mm.bing.net/th/id/OIP._Z0pUm91dpLvdoh0Y3ohbwHaHa?w=1100&h=1100&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Bape Sta White" style="width: 100%; height: 99%; object-fit: cover;">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Bape</div>
+                    <div class="product-name">Bape Sta White</div>
+                    <div class="product-price">S/999.00</div>
+                </div>
+            </div>
+
+            <!-- Off-White -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://images.moresneakers.com/off-white-out-of-office-patent-black-white-omia189s22lea0020110-16522548331381.jpg" alt="Patent 'Black White'" style="width: 100%; height: 99%; object-fit: cover;">
+                </div>
+                <div class="product-info">
+                    <div class="product-brand">Off-White</div>
+                    <div class="product-name">Patent 'Black White'</div>
+                    <div class="product-price">S/1,400.00</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<style>
+.footer {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    color: white;
+    background-color: var(--dark-bg);
+    color: var(--white);
+    padding: 40px 0;
+    border-top: 1px solid rgb(238, 101, 10);
+}
+
+.footer-section h3{
+    margin-bottom: 20px;
+    font-size: 1 .2rem;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    max-width: 1000px;
+    margin: 50px auto;
+}
+.footer {
+    background-color: #f96815ef;
+    color: rgb(0, 0, 0);
+    padding: 40px;
+    border-top: 1px solid rgb(0, 0, 0);
+}
+.footer-section h3{
+    color: rgb(0, 0, 0);
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+.footer-section p {
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+}
+</style>
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>Sobre Nosotros</h3>
+            <p>Pounce Co. "ofrece las mejores marcas de calzado exclusivas"</p>
+        </div>
+        <div class="copyright">
+        </div>
+        <div class="footer-section">
+            <h3>Contacto:</h3>
+            <p>📧 PounceCo07@gmail.com</p>
+            <p>📞 +51 965 810 871</p>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2026 Pounce Co. Todos los derechos reservados.</p>
+        </div>
+    </div>
+</footer>
